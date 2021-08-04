@@ -1,3 +1,7 @@
+function crossOffMovie(event) {
+  console.log(event.target);
+  event.target.classList.toggle("checked");
+}
 console.log("Hello World!");
 
 function addMovie(event) {
@@ -16,9 +20,10 @@ function addMovie(event) {
   deleteBtn.addEventListener("click", deleteMovie);
 
   let crossOff = document.createElement("span");
-  crossOff.textContent. = "";
+  crossOff.textContent = "";
   movie.appendChild(crossOff);
-  crossOff.addEventListener("click", crossOffMovie);
+  console.log(crossOff);
+  movieTitle.addEventListener("click", crossOffMovie);
 }
 
 const form = document.querySelector("form");
@@ -26,8 +31,4 @@ form.addEventListener("submit", addMovie);
 
 function deleteMovie(event) {
   event.target.parentNode.remove();
-}
-
-function crossOffMovie(event) {
-  event.target.classList.toggle(".checked");
 }

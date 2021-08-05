@@ -1,7 +1,5 @@
-function crossOffMovie(event) {
-  console.log(event.target);
-  event.target.classList.toggle("checked");
-}
+let message = document.querySelector("#message");
+console.log(message);
 console.log("Hello World!");
 
 function addMovie(event) {
@@ -22,13 +20,28 @@ function addMovie(event) {
   let crossOff = document.createElement("span");
   crossOff.textContent = "";
   movie.appendChild(crossOff);
-  console.log(crossOff);
   movieTitle.addEventListener("click", crossOffMovie);
 }
 
+function crossOffMovie(event) {
+  event.target.classList.toggle("checked");
+  if (event.target.classList.contains("checked")) {
+    message.textContent = `${event.target.textContent} watched!`;
+  } else {
+    message.textContent = `${event.target.textContent} added back!`;
+  }
+  revealMessage();
+}
 const form = document.querySelector("form");
 form.addEventListener("submit", addMovie);
 
 function deleteMovie(event) {
   event.target.parentNode.remove();
+  message.textContent = `${event.target.parentNode.firstChild.textContent} has been deleted!`;
+  revealMessage();
+}
+
+function revealMessage() {
+  message.classList.remove("hide");
+  setTimeout(() => message.classList.add("hide"), 1000);
 }
